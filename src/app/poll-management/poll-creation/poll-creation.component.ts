@@ -67,14 +67,12 @@ export class PollCreationComponent implements OnInit {
   }
 
   public deleteOption(optionIndex: number):void {
-    // this.pollService.setDeletedOptionIndex(optionIndex);
     this.pollOptionsFormArray.removeAt(optionIndex);
     this.deletePollOption.emit(optionIndex);
 
   }
 
   public submit():void{
-    // console.log("form value =>", this.form.value);
   }
 
   public reset():void{
@@ -83,17 +81,5 @@ export class PollCreationComponent implements OnInit {
       this.pollOptionsFormArray.removeAt(0)
     }
     this.resetPoll.emit();
-
-    // console.log("form value 2 =>", this.form.value);
   }
-
-  // private checkFormValidity():boolean{
-  //   return this.form.valid;
-  // }
-
-  // private checkForErrors():void{
-  //   if (!this.form.valid){
-  //     console.log("aaa");
-  //   }
-  // }
 }

@@ -1,43 +1,30 @@
 .form-group{
   width: 100%;
-  color: $secondary-light;
+  color: $gray-400;
   font-family: $font-family-base;
   .mat-form-field-wrapper{
     padding-bottom: 0;
   }
+  .mat-form-field-label{
+    color: $gray-400;
+    text-transform: capitalize;
+  }
+  input{
+    font-weight: $font-weight-bold;
+  }
   &.mat-form-field-appearance-outline{
-    .mat-form-field-outline-start{
-      border: .2rem solid $light-blue;
-      border-radius: 5rem 0 0 5rem;
-      border-right-style: none;
-      min-width: 5rem;
+    .mat-form-field-outline{
+      color: $gray-400;
     }
-    .mat-form-field-outline-gap{
-      border: .2rem solid $light-blue;
-      border-right-style: none;
-      border-left-style: none;
-    }
-    .mat-form-field-outline-end{
-      border: .2rem solid $light-blue;
-      border-radius: 0 5rem 5rem 0;
-      border-left-style: none;
-      min-width: 3rem;
-    }
-    .mat-form-field-label{
-      transition: none;
-      mat-label{
-        padding: 0 0 0 2rem;
-        background-color: #F7F8FA;
-        color: $gray-500;
-        text-transform: capitalize;
-      }
+    .mat-form-field-ripple{
+      background-color: $primary;
     }
     &.mat-focused{
       .mat-form-field-label{
-        mat-label{
-          display: inline-block;
-          padding-left: 2rem;
-        }
+        color: $primary;
+      }
+      .mat-form-field-underline{
+        background-color: $primary;
       }
     }
     &.validationError{
@@ -51,108 +38,10 @@
       }
     }
   }
-  input{
-    padding-left: 2rem;
-    font-weight: $font-weight-bold;
-    text-transform: capitalize;
-  }
-  /** Checkbox **/
-  &.mat-checkbox{
-    width: auto;
-  }
-  .mat-checkbox-inner-container{
-    width: 3rem;
-    height: 3rem;
-  }
-  .mat-checkbox-background, .mat-checkbox-frame{
-    @include border-radius(50%);
-  }
-  &.mat-checkbox-checked{
-    .mat-checkbox-frame{
-      display: none;
-    }
-  }
-  .mat-checkbox-frame{
-    border-color: $primary;
-  }
-  &.mat-checkbox-checked{
-      .mat-checkbox-background{
-        background-color: $primary;
-      }
-  }
 }
 mat-error{
   &.mat-error{
     text-align: left;
-  }
-}
-/** ng-select **/
-.ng-select{
-  .ng-select-container{
-    height:5.5rem !important;
-    background-color: transparent;
-    color: $gray-500;
-    font-family: $font-family-base;
-    @include border-radius(5rem);
-    @include add-border(.2rem, $light-blue, all);
-    .ng-value-container{
-      .ng-input{
-        top: 1.6rem;
-        & > input{
-          @include transform(translateY(1rem));
-        }
-      }
-      .ng-placeholder{
-        padding-left: 2rem;
-        color: $gray-500;
-      }
-      .ng-value{
-        padding-left: 1rem;
-        img{
-          margin-right: .5rem;
-        }
-      }
-    }
-  }
-  .ng-arrow-wrapper{
-    padding-right: 1.5rem;
-  }
-  .ng-dropdown-panel .ng-dropdown-panel-items .ng-option{
-    text-align: left;
-    display: flex;
-    align-items: center;
-    @include border-radius(2rem);
-    background: none;
-    img{
-      margin-right: .5rem;
-    }
-  }
-  .ng-dropdown-panel.ng-select-bottom{
-    margin-top: 1rem;
-    @include box-shadow(0, 0, 1.5rem, rgba(0,0,0,0.2));
-    @include add-border(.2rem, $white, all);
-    @include border-radius(1rem);
-  }
-  &.ng-select-disabled{
-    .ng-select-container{
-      border-color: $gray-300;
-    }
-  }
-}
-
-/** ng-otp-input **/
-ng-otp-input{
-  .otp-input{
-    font-family: $font-family-base;
-    font-weight: $font-weight-bold;
-    font-size: 2.5rem;
-    border: .2rem solid $light-blue !important;
-    @include border-radius(1rem);
-    &.ng-dirty{
-      background-color: $secondary;
-      color: $white;
-      border-color: $secondary !important;
-    }
   }
 }
 
@@ -185,3 +74,19 @@ ng-otp-input{
 .mat-ripple-element{
   background-color: $secondary !important;
 }
+
+
+// .mat-focused .mat-form-field-label {
+//   /*change color of label*/
+//   color: $primary;
+//  }
+
+// .mat-focused .mat-form-field-underline {
+//   /*change color of underline*/
+//   background-color: $primary;
+// }
+
+// .mat-form-field-ripple {
+//  /*change color of underline when focused*/
+//  background-color: $primary;
+// }

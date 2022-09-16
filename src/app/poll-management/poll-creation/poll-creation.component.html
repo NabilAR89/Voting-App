@@ -1,78 +1,82 @@
-<form *ngIf="form" [formGroup]="form" class="mb-5">
-  <div class="row mb-4">
-    <div class="col-12 mb-4">
-      <mat-form-field
-        appearance="outline"
-        class="form-group"
-        [ngClass]="{
-          validationError:
-            form.get('pollQuestion').errors
-        }"
-        [disabled]="form.get('pollQuestion').errors"
-      >
-        <input matInput formControlName="pollQuestion" type="text" />
-        <mat-label>poll question</mat-label>
-      </mat-form-field>
-      <app-error-input
-        [form]="form"
-        [controlName]="'pollQuestion'"
-        [submitted]="submitted"
-      >
-      </app-error-input>
+<section id="poll-creation" class="p-3">
+  <form *ngIf="form" [formGroup]="form" class="mb-5">
+    <div class="row mb-4">
+      <div class="col-12 mb-4">
+        <mat-form-field
+          appearance="outline"
+          class="form-group"
+          [ngClass]="{
+            validationError: form.get('pollQuestion').errors
+          }"
+          [disabled]="form.get('pollQuestion').errors"
+        >
+          <input matInput formControlName="pollQuestion" type="text" />
+          <mat-label>poll question</mat-label>
+        </mat-form-field>
+        <app-error-input
+          [form]="form"
+          [controlName]="'pollQuestion'"
+          [submitted]="submitted"
+        >
+        </app-error-input>
+      </div>
+      <div formArrayName="pollOptions" *ngIf="pollOptionsFormArray.length > 0">
+        <ng-container
+          *ngFor="
+            let optionForm of pollOptionsFormArray.controls;
+            let i = index
+          "
+        >
+          <div class="option-form-row" [formGroup]="optionForm">
+            <mat-form-field
+              appearance="outline"
+              class="form-group"
+              [ngClass]="{
+                validationError: optionForm.get('pollOption').errors
+              }"
+            >
+              <input matInput formControlName="pollOption" type="text" />
+              <mat-label>poll option</mat-label>
+            </mat-form-field>
+            <app-error-input
+              [form]="optionForm"
+              [controlName]="'pollOption'"
+              [submitted]="submitted"
+            >
+            </app-error-input>
+            <mat-icon class="delete-btn" (click)="deleteOption(i)">
+              delete_forever</mat-icon
+            >
+          </div>
+        </ng-container>
+      </div>
+      <div>
+        <mat-form-field
+          appearance="outline"
+          class="form-group"
+          [ngClass]="{
+            validationError:
+              form.get('addOptionControl').errors &&
+              form.get('addOptionControl').touched
+          }"
+        >
+          <input matInput formControlName="addOptionControl" type="text" />
+          <mat-label>add option</mat-label>
+        </mat-form-field>
+        <app-error-input
+          [form]="form"
+          [controlName]="'addOptionControl'"
+          [submitted]="submitted"
+        >
+        </app-error-input>
+        <button (click)="addOption()" [disabled]="!form.valid">
+          <mat-icon class="add-course-btn">add</mat-icon>
+        </button>
+      </div>
     </div>
-    <div formArrayName="pollOptions" *ngIf="pollOptionsFormArray.length > 0">
-      <ng-container
-        *ngFor="let optionForm of pollOptionsFormArray.controls; let i = index"
-      >
-        <div class="option-form-row" [formGroup]="optionForm">
-          <mat-form-field
-            appearance="outline"
-            class="form-group"
-            [ngClass]="{
-              validationError:
-                optionForm.get('pollOption').errors
-            }"
-          >
-            <input matInput formControlName="pollOption" type="text" />
-            <mat-label>poll option</mat-label>
-          </mat-form-field>
-          <app-error-input
-            [form]="optionForm"
-            [controlName]="'pollOption'"
-            [submitted]="submitted"
-          >
-          </app-error-input>
-          <mat-icon class="delete-btn" (click)="deleteOption(i)">
-            delete_forever</mat-icon
-          >
-        </div>
-      </ng-container>
-    </div>
-    <div>
-      <mat-form-field
-        appearance="outline"
-        class="form-group"
-        [ngClass]="{
-          validationError:
-            form.get('addOptionControl').errors && form.get('addOptionControl').touched
-        }"
-      >
-        <input matInput formControlName="addOptionControl" type="text" />
-        <mat-label>add option</mat-label>
-      </mat-form-field>
-      <app-error-input
-        [form]="form"
-        [controlName]="'addOptionControl'"
-        [submitted]="submitted"
-      >
-      </app-error-input>
-      <button (click)="addOption()" [disabled]="!form.valid">
-        <mat-icon class="add-course-btn">add</mat-icon>
-      </button>
-    </div>
+  </form>
+  <div>
+    <button (click)="reset()">reset</button>
   </div>
-</form>
-<div>
-  <button (click)="reset()">reset</button>
-</div>
-<div>{{ pollOptionsFormArray.length }} / 10 possible answers</div>
+  <div>{{ pollOptionsFormArray.length }} / 10 possible answers</div>
+</section>

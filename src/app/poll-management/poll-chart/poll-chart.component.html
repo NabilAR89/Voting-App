@@ -1,5 +1,4 @@
 <ng-container *ngIf="dataSource">
-  {{dataSource | json}}
   <h2>{{ dataSource.question }}</h2>
   <div class="row">
     <div class="col" *ngFor="let option of dataSource.options">
@@ -11,19 +10,3 @@
   </div>
   total votes: {{ getTotalVotes() }}
 </ng-container>
-
-<!-- <ng-container *ngIf="countObject">
-  <div *ngFor="let item of countObject | keyvalue">
-    {{ item.key }} {{ item.value }}
-    <h5>{{ getPercentage(item.value) }}</h5>
-  </div>
-  total votes: {{ pollAnswers.length }}
-</ng-container> -->
-
-<!-- <ng-container *ngIf="pollDetails">
-  <ng-container *ngIf="pollDetails.pollOptions.length > 0">
-    <ng-container *ngFor="let option of pollDetails.pollOptions">
-      {{ option.pollOption }}
-    </ng-container>
-  </ng-container>
-</ng-container> -->

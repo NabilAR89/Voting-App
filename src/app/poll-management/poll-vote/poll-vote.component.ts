@@ -42,21 +42,6 @@ export class PollVoteComponent implements OnInit {
 
   public vote():void{
     let value = this.form.get('answer')?.value;
-    //console.log("value ==>", value);
-    // this.pollService.setPollAnswer(value);
     this.addVote.emit(value);
   }
-
-  // public setPollOption(option:string):string{
-  //   console.log("option =>", option);
-  //   if(option === '' && this.pollDetails.pollOptions.length == 2){
-  //     this.form.get('answer')?.disable();
-  //     this.disableVoteBtn = true;
-  //     console.log("this.disableVoteBtn =>", this.disableVoteBtn);
-  //     return '';
-  //   }
-  //   this.disableVoteBtn = false;
-  //   this.form.get('answer')?.enable();
-  //   return option
-  // }
 }

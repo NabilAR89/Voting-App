@@ -12,10 +12,6 @@ import { PollService } from '../services/poll.service';
 export class PollManagementComponent implements OnInit {
   public pollDetails:any;
   public subscription: Subscription;
-  // public dataSourceFinal:any = {
-  //   question: '',
-  //   options: []
-  // };
 
   constructor(
     private pollService: PollService
@@ -31,26 +27,6 @@ export class PollManagementComponent implements OnInit {
     this.updateDataSource(this.pollDetails);
   }
 
-  // private updateDataSource(pollDetails:any){
-
-  //   let dataSource:any = {};
-
-  //   dataSource.question = pollDetails.pollQuestion;
-  //   dataSource.options = [];
-  //   let pollOptions:any[] = pollDetails.pollOptions;
-
-  //   pollOptions.forEach((res, index) => {
-  //     let option:any = {};
-  //     option.index = index;
-  //     option.count = 0;
-  //     option.percentage = 0;
-  //     option.label = res.pollOption ? res.pollOption : '__';
-  //     dataSource.options.push(option);
-  //   });
-
-  //   this.pollService.setDataSource(dataSource);
-  // }
-
   private updateDataSource(pollDetails:any){
       let dataSource:any = {};
 
@@ -60,12 +36,10 @@ export class PollManagementComponent implements OnInit {
 
       dataSource.question = pollDetails.pollQuestion;
 
-      // this.pollService.setDataSource(this.dataSource);
 
       let dataSourceOptions:any[] = dataSource.options;
 
       if(dataSourceOptions.length ==0){
-        //console.log("no options");
         let pollOptions:any[] = pollDetails.pollOptions;
         pollOptions.forEach((res, i) => {
           let option:any = {};
@@ -95,8 +69,6 @@ export class PollManagementComponent implements OnInit {
         });
 
       }
-      //this.dataSourceFinal = dataSource;
-      console.log("ds", dataSource);
       this.pollService.setDataSource(dataSource);
   }
 
@@ -124,10 +96,10 @@ export class PollManagementComponent implements OnInit {
 
   public resetPoll()
   {
-    let ds:any = {
+    let dataSource:any = {
         question: '',
         options: []
       };
-    this.pollService.setDataSource(ds);
+    this.pollService.setDataSource(dataSource);
   }
 }
