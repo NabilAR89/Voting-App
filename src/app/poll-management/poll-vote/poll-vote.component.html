@@ -1,0 +1,45 @@
+<ng-container *ngIf="dataSource">
+  <!-- <h2>{{ pollDetails.pollQuestion }}</h2>
+  <form *ngIf="form" [formGroup]="form">
+    <ng-container *ngIf="pollDetails.pollOptions.length > 0">
+      <mat-radio-group formControlName="answer" class="customRadioBoxes">
+        <ng-container *ngFor="let option of pollDetails.pollOptions; let i = index">
+          <ng-container *ngIf="option.pollOption">
+          </ng-container>
+          <mat-radio-button [value]="{ label: option.pollOption, value: i }">{{
+            option.pollOption
+          }}</mat-radio-button>
+        </ng-container>
+      </mat-radio-group>
+    </ng-container>
+    <button
+      class="btn btn-lg btn-primary"
+      (click)="vote()"
+      [disabled]="!form.valid || pollDetails.pollOptions.length < 2 || !pollDetails.pollQuestion"
+    >
+      vote
+    </button>
+  </form> -->
+
+    <h2>{{ dataSource.question }}</h2>
+    <form *ngIf="form" [formGroup]="form">
+      <ng-container *ngIf="dataSource.options.length > 0">
+        <mat-radio-group formControlName="answer" class="customRadioBoxes">
+          <ng-container *ngFor="let option of dataSource.options; let i = index">
+            <ng-container *ngIf="option.label">
+              <mat-radio-button [value]="i">{{
+                option.label
+              }}</mat-radio-button>
+            </ng-container>
+          </ng-container>
+        </mat-radio-group>
+      </ng-container>
+      <button
+        class="btn btn-lg btn-primary"
+        (click)="vote()"
+        [disabled]="!form.valid || dataSource.options.length < 2 || !dataSource.question"
+      >
+        vote
+      </button>
+    </form>
+</ng-container>

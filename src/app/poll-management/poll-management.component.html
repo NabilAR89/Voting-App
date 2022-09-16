@@ -1,0 +1,18 @@
+<div class="container">
+  <h1 class="text-primary mb-4">Sir Vote a lot</h1>
+  <div class="row">
+    <div class="col-3">
+      <app-poll-creation
+        (updatePollDetails)="updatePollDetails($event)"
+        (deletePollOption)="deletePollOption($event)"
+        (resetPoll)="resetPoll()"
+      ></app-poll-creation>
+    </div>
+    <div class="col-3">
+      <app-poll-vote (addVote)="addVote($event)"></app-poll-vote>
+    </div>
+    <div class="col-6">
+      <app-poll-chart></app-poll-chart>
+    </div>
+  </div>
+</div>

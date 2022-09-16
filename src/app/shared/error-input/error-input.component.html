@@ -1,0 +1,11 @@
+<div *ngIf="form && form.get(controlName) && errors" class="text-start ps-5">
+  <ng-container
+    *ngIf="
+      form.get(controlName).errors
+    "
+  >
+    <mat-error *ngFor="let errorKey of ObjectKey(errors.value)" class="text-danger">
+      {{ errors.value[errorKey].message }}
+    </mat-error>
+  </ng-container>
+</div>
