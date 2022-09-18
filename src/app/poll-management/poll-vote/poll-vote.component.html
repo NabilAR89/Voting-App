@@ -1,23 +1,36 @@
 <ng-container *ngIf="dataSource">
-    <h2>{{ dataSource.question }}</h2>
-    <form *ngIf="form" [formGroup]="form">
-      <ng-container *ngIf="dataSource.options.length > 0">
-        <mat-radio-group formControlName="answer" class="customRadioBoxes">
-          <ng-container *ngFor="let option of dataSource.options; let i = index">
-            <ng-container *ngIf="option.label">
-              <mat-radio-button [value]="i">{{
-                option.label
-              }}</mat-radio-button>
+  <div class="d-flex flex-column justify-content-between h-100">
+    <div>
+      <h2 class="mb-4">{{ dataSource.question }}</h2>
+      <form *ngIf="form" [formGroup]="form">
+        <ng-container *ngIf="dataSource.options.length > 0">
+          <mat-radio-group formControlName="answer" class="customRadioBoxes">
+            <ng-container
+              *ngFor="let option of dataSource.options; let i = index"
+            >
+              <div class="mb-3">
+                <ng-container *ngIf="option.label">
+                  <mat-radio-button [value]="i">{{
+                    option.label
+                  }}</mat-radio-button>
+                </ng-container>
+              </div>
             </ng-container>
-          </ng-container>
-        </mat-radio-group>
-      </ng-container>
+          </mat-radio-group>
+        </ng-container>
+      </form>
+    </div>
+    <div>
       <button
-        class="btn btn-lg btn-primary"
-        (click)="vote()"
-        [disabled]="!form.valid || dataSource.options.length < 2 || !dataSource.question"
-      >
-        vote
-      </button>
-    </form>
+      class="btn btn-lg btn-primary float-end"
+      (click)="vote()"
+      [disabled]="
+        !form.valid || dataSource.options.length < 2 || !dataSource.question
+      "
+    >
+      vote
+    </button>
+    <div class="clearfix"></div>
+    </div>
+  </div>
 </ng-container>

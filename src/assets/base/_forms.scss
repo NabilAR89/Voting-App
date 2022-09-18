@@ -48,25 +48,24 @@ mat-error{
 /** mat-radio-group **/
 .mat-radio-label{
   text-align: left;
-  color: $gray-500;
-}
-.mat-radio-group{
-  display: flex;
-  align-items: flex-start;
+  color: $gray-400;
 }
 .mat-radio-button{
   margin: .5rem 1rem;
   text-transform: capitalize;
   &.mat-accent {
+    .mat-radio-outer-circle{
+      border-color: $primary;
+    }
     .mat-radio-inner-circle{
-      background-color: $secondary;
+      background-color: $primary;
     }
     &.mat-radio-checked{
       .mat-radio-outer-circle{
-        border-color: $secondary;
+        border-color: $primary;
       }
       .mat-radio-persistent-ripple{
-        background-color: $secondary;
+        background-color: $primary;
       }
     }
   }
@@ -74,19 +73,3 @@ mat-error{
 .mat-ripple-element{
   background-color: $secondary !important;
 }
-
-
-// .mat-focused .mat-form-field-label {
-//   /*change color of label*/
-//   color: $primary;
-//  }
-
-// .mat-focused .mat-form-field-underline {
-//   /*change color of underline*/
-//   background-color: $primary;
-// }
-
-// .mat-form-field-ripple {
-//  /*change color of underline when focused*/
-//  background-color: $primary;
-// }

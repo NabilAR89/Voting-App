@@ -1,36 +1,27 @@
 button.btn{
-  width: auto;
-  text-transform: uppercase;
-  border-width: .2rem;
-  @include border-radius(5rem);
-}
-button.btn{
   font-family: $font-family-base;
-  font-weight: $font-weight-bold;
   font-size: 1.8rem;
-  letter-spacing: .4rem;
-  &.dropdown-toggle{
-    box-shadow: none;
-  }
-  &.btn-lg{
-    padding: 1rem 3rem;
-    min-width: 30rem;
-    @include media-breakpoint-down(sm) {
-      width: 100%;
-    }
-  }
-  &.btn-primary{
+  padding: .5rem 3rem;
+  text-transform: capitalize;
+  @include border-radius(5rem);
+  @include box-shadow(0, .5rem, .5rem, rgba(18,18,18,0.5));
+  // &.btn-lg{
+  //   padding: 1rem 3rem;
+  //   min-width: 30rem;
+  // }
+  &.btn-primary, &.btn-accent{
     color: $white;
-    @include box-shadow(0, .5rem, 1rem, rgba(225, 80, 99, 0.48));
   }
-  &.btn-link{
-    font-size: 1.5rem;
+  &.btn-rounded{
+    width: 4rem;
+    height: 4rem;
+    text-align: center;
+    line-height: 1rem;
     padding: 0;
+    @include border-radius(50%);
   }
-  &.btn-link-default{
-    color: $secondary;
-    letter-spacing: normal;
-    text-transform: none;
-    text-decoration: none;
+  &:disabled{
+    background-color: $gray-400;
+    border:0;
   }
 }

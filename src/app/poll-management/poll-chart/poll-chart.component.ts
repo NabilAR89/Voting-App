@@ -35,9 +35,11 @@ export class PollChartComponent implements OnInit {
   }
 
   public getPercentage(value:number): number{
-      let total =  this.getTotalVotes()
-      let perc = Math.round((value / total) * 100);
-      console.log("percentage ",perc);
-      return perc;
+      let total =  this.getTotalVotes();
+      if(value) {
+        let perc = Math.round((value / total) * 100);
+        return perc;
+      }
+      return 0;
   }
 }

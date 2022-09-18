@@ -1,4 +1,4 @@
-<section id="poll-creation" class="p-3">
+<div class="d-flex flex-column justify-content-between h-100">
   <form *ngIf="form" [formGroup]="form" class="mb-5">
     <div class="row mb-4">
       <div class="col-12 mb-4">
@@ -27,56 +27,66 @@
             let i = index
           "
         >
-          <div class="option-form-row" [formGroup]="optionForm">
-            <mat-form-field
-              appearance="outline"
-              class="form-group"
-              [ngClass]="{
-                validationError: optionForm.get('pollOption').errors
-              }"
-            >
-              <input matInput formControlName="pollOption" type="text" />
-              <mat-label>poll option</mat-label>
-            </mat-form-field>
-            <app-error-input
-              [form]="optionForm"
-              [controlName]="'pollOption'"
-              [submitted]="submitted"
-            >
-            </app-error-input>
-            <mat-icon class="delete-btn" (click)="deleteOption(i)">
-              delete_forever</mat-icon
-            >
+          <div class="option-form-row mb-4" [formGroup]="optionForm">
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="flex-grow-1 me-3">
+                <mat-form-field
+                  appearance="outline"
+                  class="form-group"
+                  [ngClass]="{
+                    validationError: optionForm.get('pollOption').errors
+                  }"
+                >
+                  <input matInput formControlName="pollOption" type="text" />
+                  <mat-label>poll option</mat-label>
+                </mat-form-field>
+                <app-error-input
+                  [form]="optionForm"
+                  [controlName]="'pollOption'"
+                  [submitted]="submitted"
+                >
+                </app-error-input>
+              </div>
+              <button class="btn btn-rounded" (click)="deleteOption(i)">
+                <mat-icon class="text-gray-regular"> delete_forever</mat-icon>
+              </button>
+            </div>
           </div>
         </ng-container>
       </div>
-      <div>
-        <mat-form-field
-          appearance="outline"
-          class="form-group"
-          [ngClass]="{
-            validationError:
-              form.get('addOptionControl').errors &&
-              form.get('addOptionControl').touched
-          }"
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="flex-grow-1 me-3">
+          <mat-form-field
+            appearance="outline"
+            class="form-group"
+            [ngClass]="{
+              validationError:
+                form.get('addOptionControl').errors &&
+                form.get('addOptionControl').touched
+            }"
+          >
+            <input matInput formControlName="addOptionControl" type="text" />
+            <mat-label>add option</mat-label>
+          </mat-form-field>
+          <app-error-input
+            [form]="form"
+            [controlName]="'addOptionControl'"
+            [submitted]="submitted"
+          >
+          </app-error-input>
+        </div>
+        <button
+          (click)="addOption()"
+          [disabled]="!form.valid"
+          class="btn btn-rounded btn-accent"
         >
-          <input matInput formControlName="addOptionControl" type="text" />
-          <mat-label>add option</mat-label>
-        </mat-form-field>
-        <app-error-input
-          [form]="form"
-          [controlName]="'addOptionControl'"
-          [submitted]="submitted"
-        >
-        </app-error-input>
-        <button (click)="addOption()" [disabled]="!form.valid">
-          <mat-icon class="add-course-btn">add</mat-icon>
+          <mat-icon>add</mat-icon>
         </button>
       </div>
     </div>
   </form>
-  <div>
-    <button (click)="reset()">reset</button>
+  <div class="d-flex align-items-center justify-content-between">
+    <div><span class="text-bold text-primary">{{ pollOptionsFormArray.length }}</span> / 10 possible answers</div>
+    <button (click)="reset()" class="btn btn-sm btn-secondary">reset</button>
   </div>
-  <div>{{ pollOptionsFormArray.length }} / 10 possible answers</div>
-</section>
+</div>

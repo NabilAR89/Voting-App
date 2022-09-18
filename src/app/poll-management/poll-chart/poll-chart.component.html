@@ -1,12 +1,17 @@
 <ng-container *ngIf="dataSource">
-  <h2>{{ dataSource.question }}</h2>
-  <div class="row">
-    <div class="col" *ngFor="let option of dataSource.options">
-      <span>{{option.count}}</span>
-      <span>{{ getPercentage(option.count) }}</span>
-      <div></div>
-      <span>{{option.label}}</span>
+  <div class="d-flex flex-column justify-content-between h-100">
+    <div class="mb-5">
+      <h2 class="mb-4">{{ dataSource.question }}</h2>
+      <div class="chart-wrapper">
+          <div class="chart-option" *ngFor="let option of dataSource.options" [style.height.%]="getPercentage(option.count)">
+            <span class="chart-option-count">{{ option.count }}</span>
+            <span class="chart-option-label">{{ option.label }}</span>
+          </div>
+      </div>
+    </div>
+    <div>
+      total votes:
+      <span class="text-bold text-primary">{{ getTotalVotes() }}</span>
     </div>
   </div>
-  total votes: {{ getTotalVotes() }}
 </ng-container>

@@ -87,6 +87,8 @@ export class PollManagementComponent implements OnInit {
     this.subscription = this.pollService.getDataSource().subscribe(result => {
       res = result;
       resOptions = res.options;
+      console.log("resOptions =>", resOptions);
+      console.log("index =>", index);
       resOptions.forEach((element,i)=>{
         if(i==index) resOptions.splice(i,1);
       });

@@ -1,18 +1,24 @@
-<div class="container">
-  <h1 class="text-primary mb-4">Sir Vote a lot</h1>
-  <div class="row">
+<div class="container mt-5">
+  <h1 class="text-primary mb-4">Sir, Vote a lot!</h1>
+  <div class="sections-wrapper row">
     <div class="col-3">
-      <app-poll-creation
-        (updatePollDetails)="updatePollDetails($event)"
-        (deletePollOption)="deletePollOption($event)"
-        (resetPoll)="resetPoll()"
-      ></app-poll-creation>
+      <section id="poll-creation" class="p-3">
+        <app-poll-creation
+          (updatePollDetails)="updatePollDetails($event)"
+          (deletePollOption)="deletePollOption($event)"
+          (resetPoll)="resetPoll()"
+        ></app-poll-creation>
+      </section>
     </div>
     <div class="col-3">
-      <app-poll-vote (addVote)="addVote($event)"></app-poll-vote>
+      <section id="poll-vote" class="p-3">
+        <app-poll-vote (addVote)="addVote($event)"></app-poll-vote>
+      </section>
     </div>
     <div class="col-6">
-      <app-poll-chart></app-poll-chart>
+      <section id="poll-chart" class="p-3">
+        <app-poll-chart></app-poll-chart>
+      </section>
     </div>
   </div>
 </div>

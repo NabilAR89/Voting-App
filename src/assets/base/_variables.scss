@@ -70,6 +70,8 @@ $dark: $gray-900 !default;
 $primary-light: $light-blue;
 $light-background: $gray-200;
 $secondary-light: $dark-blue-300;
+$accent: $turquoise;
+$gray-regular: $gray-400;
 // scss-docs-end theme-color-variables
 
 // scss-docs-start theme-colors-map
@@ -82,6 +84,8 @@ $theme-colors: (
   "light-background": $light-background,
   "primary-light": $primary-light,
   "secondary-light": $secondary-light,
+  "accent": $accent,
+  "gray-regular": $gray-regular
 ) !default;
 
 $font-family-base: "Lato", sans-serif !default;

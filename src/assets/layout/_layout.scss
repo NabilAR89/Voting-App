@@ -1,4 +1,38 @@
+.sections-wrapper{
+  min-height: 40rem;
+}
 section{
+  height: 100%;
   background-color: $gray-900;
   @include border-radius(.4rem);
+}
+
+/** Chart **/
+
+.chart-wrapper{
+  display: flex;
+  justify-content: center;
+  height: 30rem;
+  @include add-border(.1rem, $gray-400, bottom);
+  .chart-option{
+    width: 5rem;
+    position: relative;
+    background: $primary;
+    align-self: end;
+    margin: 0 0.5rem;
+    transition: all 200ms linear;
+    .chart-option-count, .chart-option-label{
+      text-align: center;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .chart-option-count{
+      bottom: 100%;
+    }
+    .chart-option-label{
+      top: 100%;
+      text-transform: capitalize;
+    }
+  }
 }
