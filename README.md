@@ -21,7 +21,7 @@ questions created and the votes that each question got.
 ## Installation
 
 1- Node version: 16.14.0
-Install Node on your machine. Navigate to [Node Website](https://nodejs.org/en/download/`) to install Node.
+Install Node on your machine. Navigate to [Node Website](https://nodejs.org/en/download/) to install Node.
 
 2- Angular CLI: 14.1.3
 Install Angular globally on your machine using the below command
