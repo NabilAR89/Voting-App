@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { RxwebValidators } from '@rxweb/reactive-form-validators';
+import { DataSourceContract } from 'src/app/models/data-source.contract';
 import { PollService } from 'src/app/services/poll.service';
 
 @Component({
@@ -14,11 +15,11 @@ import { PollService } from 'src/app/services/poll.service';
   templateUrl: './poll-vote.component.html',
 })
 export class PollVoteComponent implements OnInit {
-  public dataSource: any;
+  public dataSource: DataSourceContract;
   public form: FormGroup;
   public disableVoteBtn:boolean = false;
   @Input() pollDetailsData:any;
-  @Output() addVote = new EventEmitter<any>();
+  @Output() addVote = new EventEmitter<number>();
 
 
   constructor(

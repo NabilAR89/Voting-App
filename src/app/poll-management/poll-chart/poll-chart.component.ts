@@ -2,6 +2,8 @@ import {
   Component,
   OnInit
 } from '@angular/core';
+import { DataSourceOptionsContract } from 'src/app/models/data-source-options.contract';
+import { DataSourceContract } from 'src/app/models/data-source.contract';
 import { PollService } from 'src/app/services/poll.service';
 
 @Component({
@@ -9,10 +11,7 @@ import { PollService } from 'src/app/services/poll.service';
   templateUrl: './poll-chart.component.html',
 })
 export class PollChartComponent implements OnInit {
-  public dataSource: any;
-  public pollAnswers:any[] = [];
-  public countObject = {};
-  public totalCount:number = 0;
+  public dataSource: DataSourceContract;
 
   constructor(
     private pollService:PollService
@@ -25,11 +24,12 @@ export class PollChartComponent implements OnInit {
   }
 
   public getTotalVotes():number{
-    let options:any[] = this.dataSource.options;
+    let options:DataSourceOptionsContract[] = this.dataSource.options as DataSourceOptionsContract[];
     let count:number = 0;
     options.forEach(res => {
-      this.totalCount += res.count;
-      count += res.count;
+      if(res){
+        count += res.count as number;
+      }
     })
     return count;
   }

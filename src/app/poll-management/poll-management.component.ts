@@ -3,6 +3,8 @@ import {
   OnInit
 } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { DataSourceOptionsContract } from '../models/data-source-options.contract';
+import { DataSourceContract } from '../models/data-source.contract';
 import { PollService } from '../services/poll.service';
 
 @Component({
@@ -28,7 +30,7 @@ export class PollManagementComponent implements OnInit {
   }
 
   private updateDataSource(pollDetails:any){
-      let dataSource:any = {};
+      let dataSource:DataSourceContract = {};
 
       this.subscription = this.pollService.getDataSource().subscribe(result => {
         dataSource = result;
@@ -37,12 +39,12 @@ export class PollManagementComponent implements OnInit {
       dataSource.question = pollDetails.pollQuestion;
 
 
-      let dataSourceOptions:any[] = dataSource.options;
+      let dataSourceOptions:DataSourceOptionsContract[] = dataSource.options as DataSourceOptionsContract[];
 
       if(dataSourceOptions.length ==0){
         let pollOptions:any[] = pollDetails.pollOptions;
         pollOptions.forEach((res, i) => {
-          let option:any = {};
+          let option:DataSourceOptionsContract = {};
           option.count = 0;
           option.label = res.pollOption ? res.pollOption : '__';
           dataSourceOptions.push(option);
@@ -61,7 +63,7 @@ export class PollManagementComponent implements OnInit {
           });
           if(!exist)
           {
-            let option:any = {};
+            let option:DataSourceOptionsContract = {};
             option.count = 0;
             option.label = res.pollOption ? res.pollOption : '__';
             dataSourceOptions.push(option);
@@ -73,22 +75,28 @@ export class PollManagementComponent implements OnInit {
   }
 
   public addVote(event:number){
-      let res:any;
+      let res:DataSourceContract;
+      let options:DataSourceOptionsContract[] = [];
+      let count:number = 0;
       this.subscription = this.pollService.getDataSource().subscribe(result => {
           res = result;
+          if (res.options){
+            options = res.options!;
+            count = res.options[event].count ?? 0;
+            count++;
+            res.options[event].count = count;
+          }
       });
-      res.options[event].count++;
+      // options[event]!.count++ as number;
       this.subscription.unsubscribe();
   }
 
   public deletePollOption(index:number){
-    let res:any = {};
-    let resOptions:any[];
+    let res:DataSourceContract = {};
+    let resOptions:DataSourceOptionsContract[] = [];
     this.subscription = this.pollService.getDataSource().subscribe(result => {
       res = result;
-      resOptions = res.options;
-      console.log("resOptions =>", resOptions);
-      console.log("index =>", index);
+      resOptions = res.options!;
       resOptions.forEach((element,i)=>{
         if(i==index) resOptions.splice(i,1);
       });
@@ -98,7 +106,7 @@ export class PollManagementComponent implements OnInit {
 
   public resetPoll()
   {
-    let dataSource:any = {
+    let dataSource:DataSourceContract = {
         question: '',
         options: []
       };

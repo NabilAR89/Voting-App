@@ -27,13 +27,17 @@ export class ErrorInputComponent implements OnInit, OnDestroy {
   private checkControlChanges(): void {
     this.subscriptionList.push(
       this.form.get(this.controlName)!.valueChanges.subscribe((res) => {
-        this.setErrors();
+        if(res){
+          this.setErrors();
+        }
       })
     );
   }
 
   private setErrors(): void {
-    this.errors.next(this.form.get(this.controlName)!.errors);
+    if(this.form.get(this.controlName)!.errors){
+      this.errors.next(this.form.get(this.controlName)!.errors);
+    }
   }
 
   ngOnDestroy(): void {
